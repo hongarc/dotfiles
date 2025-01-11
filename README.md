@@ -4,5 +4,5 @@
 #### Apply all config
 
 ```sh
-stow -t ~ */
+stow */
 ```
