@@ -69,7 +69,11 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ---- Starship Prompt Initialization (Optional) ----
 # Uncomment to initialize the Starship prompt if you're using it
-eval "$(starship init zsh)"
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+else
+  echo "Starship is not installed. Please install it first."
+fi
 
 # ---- The Fuck Configuration ----
 # Enable The Fuck command alias for correcting previous commands
