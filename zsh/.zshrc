@@ -1,7 +1,7 @@
 # ---- System PATH Configuration ----
 # If you come from Bash, you may need to modify your $PATH.
 # Add custom directories to the system PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # ---- Oh My Zsh Configuration ----
 # Path to your Oh My Zsh installation
@@ -84,8 +84,7 @@ eval $(thefuck --alias f)
 export FZF_COMPLETION_TRIGGER='//'
 source <(fzf --zsh)
 
-
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ "$TERM_PROGRAM" = "ghostty" ] && [ -z "$NVIM" ] && command -v fastfetch >/dev/null 2>&1; then
+  fastfetch
+fi
+eval "$(~/.local/bin/mise activate zsh)"
