@@ -7,5 +7,14 @@ return {
         hide_gitignored = false, -- Optional: Show files ignored by .gitignore
       },
     },
+    window = {
+      mappings = {
+        ["l"] = "show_file_details",
+        ["i"] = "open",
+        -- ["n"] = "move_cursor_down",
+        ["e"] = false,
+        -- ["k"] = "move_cursor_up",
+      }
+    }
   },
 }

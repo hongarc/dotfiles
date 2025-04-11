@@ -1,0 +1,71 @@
+theme:
+  activeBorderColor:
+    - '#eebebe' # Rosewater
+    - bold
+  inactiveBorderColor:
+    - '#a5adce' # Lavender
+  optionsTextColor:
+    - '#8caaee' # Blue
+  selectedLineBgColor:
+    - '#414559' # Surface1
+  cherryPickedCommitBgColor:
+    - '#51576d' # Surface2
+  cherryPickedCommitFgColor:
+    - '#eebebe' # Rosewater
+  unstagedChangesColor:
+    - '#e78284' # Red
+  stagedChangesColor:
+    - '#a6d189' # Green
+  mergingConflictsColor:
+    - '#ef9f76' # Peach
+  searchingActiveBorderColor:
+    - '#e5c890' # Yellow
+  defaultFgColor:
+    - '#c6d0f5' # Text
+  diffBoundaryColor:
+    - '#f4b8e4' # Pink
+  commitHashColor:
+    - '#babbf1' # Mauve
+  branchColor:
+    - '#81c8be' # Teal
+  remoteBranchColor:
+    - '#99d1db' # Sapphire
+  tagColor:
+    - '#ef9f76' # Peach
+  reflogColor:
+    - '#f2d5cf' # Flamingo
+  unstagedChangesBgColor:
+    - '#292c3c' # Mantle (for better contrast)
+
+authorColors:
+  '*': '#babbf1' # Mauve
+
+keybinding:
+  universal:
+    prevItem-alt: 'e'  # Move up (instead of 'k')
+    nextItem-alt: 'n'  # Move down (instead of 'j')
+    prevBlock-alt: 'h' # Move up a block (instead of 'u')
+    nextBlock-alt: 'i' # Move down a block (instead of 'd')
+    new: 'k'
+    edit: 'o'
+    openFile: 'O'
+    scrollUpMain-alt1: 'I'  # Scroll up (uppercase block move)
+    scrollDownMain-alt1: 'H' # Scroll down (uppercase block move)
+    undo: 'l'
+    redo: '<c-r>'
+    diffingMenu: 'M'
+    filteringMenu: '<c-f>'
+
+  files:
+    ignoreFile: 'I'
+    stashChanges: 'S'
+    applyStash: 'P'
+
+  commits:
+    moveDownCommit: '<c-e>'
+    moveUpCommit: '<c-n>'
+    commitChanges: 'C'
+
+  branches:
+    viewGitFlowOptions: 'V'
+    setUpstream: 'U'
