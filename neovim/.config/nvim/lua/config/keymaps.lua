@@ -31,3 +31,4 @@ vim.keymap.set({ "n", "v" }, "L", "I") -- Move right (Shift)
 vim.keymap.set("n", "<C-n>", "<C-w>j") -- Move to the split below
 vim.keymap.set("n", "<C-e>", "<C-w>k") -- Move to the split above
 vim.keymap.set("n", "<C-i>", "<C-w>l") -- Move to the right split
+vim.keymap.set("n", "<C-l>", "<C-d>") -- Map Ctrl + l to <C-d>
