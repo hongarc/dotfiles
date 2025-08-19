@@ -1,23 +1,29 @@
-# Git plugin for Zsh
+# Git integration and aliases
 ohmyzsh/ohmyzsh path:plugins/git
 
-# Git auto-fetch plugin
+# Auto-fetch git updates
 ohmyzsh/ohmyzsh path:plugins/git-auto-fetch
 
-# Zsh autosuggestions
-zsh-users/zsh-autosuggestions
-
-# Zsh syntax highlighting
-zsh-users/zsh-syntax-highlighting
-
-# FZF tab completion
-Aloxaf/fzf-tab
-
-# Zoxide - faster cd
-ajeetdsouza/zoxide
-
-# Terraform CLI plugin
+# Terraform CLI support
 ohmyzsh/ohmyzsh path:plugins/terraform
 
-# Tmux plugin
+# Command suggestions
+zsh-users/zsh-autosuggestions
+
+# Syntax highlighting
+zsh-users/zsh-syntax-highlighting
+
+# Extra completions
+zsh-users/zsh-completions
+
+# Fuzzy tab completion
+Aloxaf/fzf-tab
+
+# Smart cd navigation
+ajeetdsouza/zoxide
+
+# Tmux integration
 ohmyzsh/ohmyzsh path:plugins/tmux
+
+# History search with arrows
+zsh-users/zsh-history-substring-search

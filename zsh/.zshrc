@@ -73,6 +73,18 @@ export PATH="$PNPM_HOME:$PATH"
 [ -x ~/.local/bin/mise ] && eval "$(~/.local/bin/mise activate zsh)"
 # ===== END PATH =====
 
+# ===== KEY BINDINGS for history substring search =====
+# History substring search key bindings (after plugins are loaded)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
+HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_TIMEOUT=0
+HISTORY_SUBSTRING_SEARCH_PREFIXED='^'
+
 # ===== TOOL INITIALIZATION =====
 # Starship prompt
 run_if_exists starship eval "$(starship init zsh)"
