@@ -1,0 +1,23 @@
+# Git plugin for Zsh
+ohmyzsh/ohmyzsh path:plugins/git
+
+# Git auto-fetch plugin
+ohmyzsh/ohmyzsh path:plugins/git-auto-fetch
+
+# Zsh autosuggestions
+zsh-users/zsh-autosuggestions
+
+# Zsh syntax highlighting
+zsh-users/zsh-syntax-highlighting
+
+# FZF tab completion
+Aloxaf/fzf-tab
+
+# Zoxide - faster cd
+ajeetdsouza/zoxide
+
+# Terraform CLI plugin
+ohmyzsh/ohmyzsh path:plugins/terraform
+
+# Tmux plugin
+ohmyzsh/ohmyzsh path:plugins/tmux
