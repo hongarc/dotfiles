@@ -41,6 +41,13 @@ fi
 run_if_exists gh eval "$(gh completion -s zsh)"
 # ===== END COMPLETION =====
 
+# ===== EDITOR CONFIGURATION =====
+# Set Neovim as default editor
+export EDITOR='nvim'
+export VISUAL='nvim'
+export GIT_EDITOR='nvim'
+# ===== END EDITOR =====
+
 # ===== ANTIDOTE PLUGIN MANAGER =====
 # Clone antidote if it doesn't exist
 if [[ ! -d ${ZDOTDIR:-~}/.antidote ]]; then
@@ -153,4 +160,17 @@ alias la='ls -lAh'
 # Quick project navigation
 alias dotfiles='cd ~/project/dotfiles'
 alias projects='cd ~/project'
+
+# Yazi file manager with directory changing
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# Quick Yazi command
+alias y='yazi'
 # ===== END ALIASES & FUNCTIONS =====

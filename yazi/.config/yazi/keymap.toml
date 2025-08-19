@@ -1,0 +1,67 @@
+# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+# If you encounter any issues, please make an issue at https://github.com/yazi-rs/schemas.
+"$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
+
+[mgr]
+# Colemak navigation - prepend to override defaults with higher priority
+prepend_keymap = [
+	{ on = "e", run = "arrow prev", desc = "Previous file (Colemak up)" },
+	{ on = "n", run = "arrow next", desc = "Next file (Colemak down)" },
+	{ on = "h", run = "leave", desc = "Back to parent directory (Colemak left)" },
+	{ on = "i", run = "enter", desc = "Enter child directory (Colemak right)" },
+
+	# Colemak page navigation
+	{ on = "u", run = "arrow -50%", desc = "Move cursor up half page (Colemak)" },
+	{ on = "l", run = "arrow 50%", desc = "Move cursor down half page (Colemak)" },
+]
+
+[tasks]
+# Colemak navigation for tasks - prepend to override defaults
+prepend_keymap = [
+	{ on = "e", run = "arrow prev", desc = "Previous task (Colemak up)" },
+	{ on = "n", run = "arrow next", desc = "Next task (Colemak down)" },
+]
+
+[spot]
+# Colemak navigation for spot - prepend to override defaults
+prepend_keymap = [
+	{ on = "e", run = "arrow prev", desc = "Previous line (Colemak up)" },
+	{ on = "n", run = "arrow next", desc = "Next line (Colemak down)" },
+	{ on = "h", run = "swipe prev", desc = "Swipe to previous file (Colemak left)" },
+	{ on = "i", run = "swipe next", desc = "Swipe to next file (Colemak right)" },
+]
+
+[pick]
+# Colemak navigation for pick - prepend to override defaults
+prepend_keymap = [
+	{ on = "e", run = "arrow prev", desc = "Previous option (Colemak up)" },
+	{ on = "n", run = "arrow next", desc = "Next option (Colemak down)" },
+]
+
+[input]
+# Colemak character movement - prepend to override defaults
+prepend_keymap = [
+	{ on = "h", run = "move -1", desc = "Move back a character (Colemak left)" },
+	{ on = "i", run = "move 1", desc = "Move forward a character (Colemak right)" },
+]
+
+[confirm]
+# Colemak navigation for confirm - prepend to override defaults
+prepend_keymap = [
+	{ on = "e", run = "arrow prev", desc = "Previous line (Colemak up)" },
+	{ on = "n", run = "arrow next", desc = "Next line (Colemak down)" },
+]
+
+[cmp]
+# Colemak navigation for completion - prepend to override defaults
+prepend_keymap = [
+	{ on = "u", run = "arrow prev", desc = "Previous item (Colemak up)" },
+	{ on = "l", run = "arrow next", desc = "Next item (Colemak down)" },
+]
+
+[help]
+# Colemak navigation for help - prepend to override defaults
+prepend_keymap = [
+	{ on = "e", run = "arrow prev", desc = "Previous line (Colemak up)" },
+	{ on = "n", run = "arrow next", desc = "Next line (Colemak down)" },
+]

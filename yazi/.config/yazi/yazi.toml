@@ -1,0 +1,10 @@
+[mgr]
+# Show hidden files by default (useful for dotfiles)
+show_hidden = true
+
+[preview]
+# Larger preview area for better visibility
+max_width = 800
+max_height = 1000
+
+# Rest of the configuration uses defaults
