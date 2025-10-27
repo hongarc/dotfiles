@@ -8,7 +8,7 @@ return {
       transparent_background = true,
       show_end_of_buffer = true,
       float = {
-        transparent = true,
+        transparent = false,
         solid = false,
       },
       auto_integrations = true,
