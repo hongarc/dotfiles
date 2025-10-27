@@ -8,3 +8,6 @@
 [submodule "tmux/.config/tmux/plugins/tmux-plugins/tmux-cpu"]
 	path = tmux/.config/tmux/plugins/tmux-plugins/tmux-cpu
 	url = git@github.com:tmux-plugins/tmux-cpu.git
+[submodule "tmux/.config/tmux/plugins/tmux-fzf"]
+	path = tmux/.config/tmux/plugins/tmux-fzf
+	url = git@github.com:sainnhe/tmux-fzf.git
