@@ -1,3 +1,5 @@
+export PATH="/opt/homebrew/opt/git/bin:$PATH"
+
 # ---- Helper: Run if command exists ----
 run_if_exists() {
   if command -v "$1" >/dev/null 2>&1; then
@@ -174,3 +176,5 @@ function yy() {
 # Quick Yazi command
 alias y='yazi'
 # ===== END ALIASES & FUNCTIONS =====
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
