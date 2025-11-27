@@ -50,6 +50,10 @@ export VISUAL='nvim'
 export GIT_EDITOR='nvim'
 # ===== END EDITOR =====
 
+# ===== PATH CONFIGURATION =====
+# Base PATH
+export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+
 # ===== ANTIDOTE PLUGIN MANAGER =====
 # Clone antidote if it doesn't exist
 if [[ ! -d ${ZDOTDIR:-~}/.antidote ]]; then
@@ -62,10 +66,6 @@ source ${ZDOTDIR:-~}/.antidote/antidote.zsh
 # Initialize plugins statically with ${ZDOTDIR:-~}/.zsh_plugins.txt
 antidote load
 # ===== END ANTIDOTE =====
-
-# ===== PATH CONFIGURATION =====
-# Base PATH
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 
 # LM Studio CLI
 export PATH="$PATH:$HOME/.cache/lm-studio/bin"
