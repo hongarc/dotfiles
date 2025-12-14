@@ -49,5 +49,8 @@ vim.keymap.set("t", "<C-e>", [[<C-\><C-n><C-w>k]], { desc = "Go to Upper Window 
 -- Miscellaneous
 -- =========================================================
 
+-- Exit insert mode with 'ne' (Colemak equivalent of 'jk')
+vim.keymap.set("i", "ne", "<Esc>", { desc = "Exit Insert Mode" })
+
 -- Scroll down (alias Ctrl+l)
 vim.keymap.set("n", "<C-l>", "<C-d>", { desc = "Scroll Down (alias of <C-d>)" })
