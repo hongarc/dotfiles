@@ -25,6 +25,7 @@ setopt HIST_FIND_NO_DUPS         # Do not display a line previously found
 setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion
+setopt HIST_IGNORE_SPACE         # Don't record commands starting with space
 # ===== END HISTORY =====
 
 # ===== COMPLETION SYSTEM =====
@@ -32,7 +33,7 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 autoload -Uz compinit
 
 # Only run compinit once per day for performance
-if [[ -n ${ZDOTDIR}/.zcompdump(#qN.mh+24) ]]; then
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
   compinit
   compdump
 else
@@ -86,8 +87,15 @@ export PATH="$PNPM_HOME:$PATH"
 # History substring search key bindings (after plugins are loaded)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M vicmd 'e' history-substring-search-up
+bindkey -M vicmd 'n' history-substring-search-down
+# history search (Alt + E / Alt + N)
+bindkey '^[e' up-line-or-search
+bindkey '^[n' down-line-or-search
+
+# autosuggestion accept (Alt + I)
+bindkey '^[i' autosuggest-accept
+
 HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND=''
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND=''
@@ -103,7 +111,10 @@ run_if_exists thefuck eval "$(thefuck --alias f)"
 
 # FZF
 export FZF_COMPLETION_TRIGGER='//'
-run_if_exists fzf source <(fzf --zsh)
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
+
+# Zoxide (smart cd)
+run_if_exists zoxide eval "$(zoxide init zsh)"
 
 # Fastfetch for Ghostty
 if [ "$TERM_PROGRAM" = "ghostty" ] && [ -z "$NVIM" ]; then
@@ -153,11 +164,22 @@ function d () {
 }
 compdef _dirs d
 
-# List directory contents
-alias lsa='ls -lah'
-alias l='ls -lah'
-alias ll='ls -lh'
-alias la='ls -lAh'
+# Editor shortcut
+alias v='nvim'
+
+# List directory contents (use eza if available, fallback to ls)
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza --icons'
+  alias l='eza -lah --icons'
+  alias ll='eza -lh --icons'
+  alias la='eza -lAh --icons'
+  alias lt='eza --tree --icons'
+else
+  alias lsa='ls -lah'
+  alias l='ls -lah'
+  alias ll='ls -lh'
+  alias la='ls -lAh'
+fi
 
 # Quick project navigation
 alias dotfiles='cd ~/project/dotfiles'
@@ -178,3 +200,5 @@ alias y='yazi'
 # ===== END ALIASES & FUNCTIONS =====
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+
