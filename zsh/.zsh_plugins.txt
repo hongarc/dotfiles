@@ -19,9 +19,6 @@ zsh-users/zsh-completions
 # Fuzzy tab completion
 Aloxaf/fzf-tab
 
-# Smart cd navigation
-ajeetdsouza/zoxide
-
 # Tmux integration
 ohmyzsh/ohmyzsh path:plugins/tmux
 

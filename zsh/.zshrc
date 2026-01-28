@@ -1,10 +1,19 @@
 export PATH="/opt/homebrew/opt/git/bin:$PATH"
 
-# ---- Helper: Run if command exists ----
+# ---- Helper functions ----
+# Run command if it exists
 run_if_exists() {
   if command -v "$1" >/dev/null 2>&1; then
-    shift
     "$@"
+  fi
+}
+
+# Eval init script if command exists (avoids premature command substitution)
+eval_init() {
+  local cmd="$1"
+  shift
+  if command -v "$cmd" >/dev/null 2>&1; then
+    eval "$("$cmd" "$@")"
   fi
 }
 
@@ -41,7 +50,7 @@ else
 fi
 
 # GitHub CLI completions (gh provides its own completions)
-run_if_exists gh eval "$(gh completion -s zsh)"
+eval_init gh completion -s zsh
 # ===== END COMPLETION =====
 
 # ===== EDITOR CONFIGURATION =====
@@ -104,21 +113,21 @@ HISTORY_SUBSTRING_SEARCH_PREFIXED='^'
 
 # ===== TOOL INITIALIZATION =====
 # Starship prompt
-run_if_exists starship eval "$(starship init zsh)"
+eval_init starship init zsh
 
 # The Fuck
-run_if_exists thefuck eval "$(thefuck --alias f)"
+eval_init thefuck --alias f
 
 # FZF
 export FZF_COMPLETION_TRIGGER='//'
 command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 
 # Zoxide (smart cd)
-run_if_exists zoxide eval "$(zoxide init zsh)"
+eval_init zoxide init zsh
 
 # Fastfetch for Ghostty
 if [ "$TERM_PROGRAM" = "ghostty" ] && [ -z "$NVIM" ]; then
-  run_if_exists fastfetch fastfetch --config hypr
+  run_if_exists fastfetch --config hypr
 fi
 
 # Bun shell
@@ -202,3 +211,6 @@ alias y='yazi'
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
 
+
+# Added by Antigravity
+export PATH="$HOME/Library/Python/3.9/bin:$PATH"
