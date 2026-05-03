@@ -1,0 +1,36 @@
+/* wlogout — Catppuccin Frappé */
+
+* {
+    font-family: "CaskaydiaCove Nerd Font", "FiraCode Nerd Font", sans-serif;
+    background-image: none;
+    transition: 0.2s cubic-bezier(0.55, 0.0, 0.28, 1.682);
+}
+
+window {
+    background: rgba(48, 52, 70, 0.85);
+}
+
+button {
+    color: #c6d0f5;
+    background-color: #303446;
+    border: 2px solid #51576d;
+    border-radius: 14px;
+    margin: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 30%;
+}
+
+button:hover, button:focus {
+    background-color: #8caaee;
+    color: #303446;
+    border-color: #8caaee;
+    outline: none;
+    box-shadow: 0 0 16px rgba(140, 170, 238, 0.5);
+}
+
+#lock     { background-image: image(url("/usr/share/wlogout/icons/lock.png")); }
+#logout   { background-image: image(url("/usr/share/wlogout/icons/logout.png")); }
+#suspend  { background-image: image(url("/usr/share/wlogout/icons/suspend.png")); }
+#reboot   { background-image: image(url("/usr/share/wlogout/icons/reboot.png")); }
+#shutdown { background-image: image(url("/usr/share/wlogout/icons/shutdown.png")); }

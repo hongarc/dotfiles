@@ -1,0 +1,152 @@
+/* Catppuccin Frappé · GNOME-quick-settings minimal layout */
+
+* {
+  font-family: "CaskaydiaCove Nerd Font", "FiraCode Nerd Font", "Symbols Nerd Font Mono", sans-serif;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background-color: rgba(48, 52, 70, 0.85);
+  color: #c6d0f5;
+  border-bottom: 2px solid rgba(140, 170, 238, 0.4);
+}
+
+tooltip {
+  background: #292c3c;
+  border: 1px solid #8caaee;
+  border-radius: 8px;
+}
+tooltip label { color: #c6d0f5; }
+
+/* Workspaces — single outer border, no per-button borders */
+#workspaces {
+  background: rgba(65, 69, 89, 0.6);
+  margin: 4px 6px;
+  padding: 2px 4px;
+  border: 1px solid #626880;
+  border-radius: 10px;
+}
+#workspaces button {
+  padding: 0 10px;
+  margin: 2px;
+  border-radius: 8px;
+  background: transparent;
+  color: #c6d0f5;
+  transition: background 0.15s ease, color 0.15s ease;
+  min-width: 26px;
+}
+#workspaces button.active {
+  background: #8caaee;
+  color: #1e2030;
+  font-weight: bold;
+}
+#workspaces button.urgent { background: #e78284; color: #1e2030; }
+#workspaces button.empty  { color: #838ba7; }
+#workspaces button:hover  { background: #51576d; color: #ffffff; }
+
+/* Window title */
+#window {
+  margin: 4px 8px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: rgba(65, 69, 89, 0.6);
+  color: #b5bfe2;
+}
+window#waybar.empty #window { background: transparent; }
+
+/* Clock (center) */
+#clock {
+  margin: 4px 0;
+  padding: 0 14px;
+  border-radius: 10px;
+  background: rgba(65, 69, 89, 0.6);
+  color: #f4b8e4;
+  font-weight: bold;
+}
+
+/* MPRIS */
+#mpris {
+  margin: 4px 8px;
+  padding: 0 12px;
+  border-radius: 10px;
+  background: rgba(65, 69, 89, 0.6);
+  color: #a6d189;
+}
+#mpris.paused  { color: #a5adce; }
+
+/* ==================================================
+   Right-side modules — group border (excl. power) + separate power
+   ================================================== */
+
+/* Shared visual styling for the grouped items (top + bottom border) */
+#custom-weather,
+#custom-updates,
+#pulseaudio,
+#network,
+#custom-notifications,
+#tray {
+  margin: 4px 0;
+  padding: 0 12px;
+  background: rgba(65, 69, 89, 0.6);
+  border-top: 1px solid #626880;
+  border-bottom: 1px solid #626880;
+  border-radius: 0;
+  transition: background 0.15s ease;
+}
+
+/* First in group — left side rounded + left border */
+#custom-weather {
+  border-left: 1px solid #626880;
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  margin-left: 6px;
+}
+
+/* Last in group — right side rounded + right border.
+   Apply to both notifications and tray because tray is often empty
+   (no system tray icons), in which case it collapses to 0 width and
+   the right edge needs to come from notifications. */
+#custom-notifications,
+#tray {
+  border-right: 1px solid #626880;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Power button — completely separate pill with its own border */
+#custom-power {
+  margin: 4px 6px 4px 8px;
+  padding: 0 14px;
+  background: rgba(65, 69, 89, 0.6);
+  border: 1px solid #e78284;
+  border-radius: 12px;
+  color: #e78284;
+  font-size: 15px;
+  transition: background 0.15s ease;
+}
+
+/* Per-module text colors */
+#custom-weather         { color: #99d1db; }
+#custom-weather.offline { color: #737994; }
+#custom-updates         { color: #ef9f76; }
+#custom-updates.clean   { color: #a6d189; }
+#pulseaudio             { color: #81c8be; }
+#pulseaudio.muted       { color: #737994; }
+#network                { color: #a6d189; }
+#network.disconnected   { color: #e78284; }
+#custom-notifications   { color: #e5c890; }
+#tray                   { color: #c6d0f5; }
+
+/* Hover on every clickable pill */
+#pulseaudio:hover,
+#network:hover,
+#custom-weather:hover,
+#custom-updates:hover,
+#custom-notifications:hover,
+#mpris:hover,
+#clock:hover,
+#window:hover,
+#custom-power:hover {
+  background: #51576d;
+}

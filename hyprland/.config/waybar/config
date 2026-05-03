@@ -1,0 +1,160 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+  "spacing": 0,
+  "modules-left": ["hyprland/workspaces", "hyprland/window", "mpris"],
+  "modules-center": ["clock"],
+  "modules-right": ["custom/weather", "custom/updates", "pulseaudio", "network", "custom/notifications", "tray", "custom/power"],
+
+  "hyprland/workspaces": {
+    "format": "{name} {windows}",
+    "format-window-separator": "  ",
+    "window-rewrite-default": "",
+    "window-rewrite": {
+      "class<google-chrome>":            "",
+      "class<chromium>":                 "",
+      "class<firefox>":                  "",
+      "class<com.mitchellh.ghostty>":    "",
+      "class<ghostty>":                  "",
+      "class<foot>":                     "",
+      "title<.*nvim.*>":                 "",
+      "class<Code>":                     "󰨞",
+      "class<code-url-handler>":         "󰨞",
+      "class<lazygit>":                  "",
+      "class<discord>":                  "󰙯",
+      "class<Slack>":                    "",
+      "class<Spotify>":                  "",
+      "class<pavucontrol>":              ""
+    },
+    "on-click": "activate",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "persistent-workspaces": { "*": 5 }
+  },
+
+  "hyprland/window": {
+    "format": "{}",
+    "max-length": 60,
+    "separate-outputs": true,
+    "icon": false,
+    "rewrite": {
+      "(.*) - Google Chrome":     "  $1",
+      "Google Chrome":            "  Chrome",
+      "(.*) - Mozilla Firefox":   "🦊  $1",
+      "(.*) - Visual Studio Code":"󰨞  $1",
+      "(.*) - ghostty":           "  $1",
+      "(.*) - NVIM":              "  $1",
+      "(.*) - lazygit":           "  $1"
+    }
+  },
+
+  "mpris": {
+    "format": "{player_icon}  {dynamic}",
+    "format-paused": "{status_icon}  {dynamic}",
+    "format-stopped": "",
+    "dynamic-len": 30,
+    "dynamic-order": ["title", "artist"],
+    "max-length": 35,
+    "player-icons": {
+      "default": "",
+      "spotify": "",
+      "firefox": "",
+      "chromium": "",
+      "google-chrome": ""
+    },
+    "status-icons": { "playing": "", "paused": "", "stopped": "" },
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous"
+  },
+
+  "clock": {
+    "format": " {:%a %d %b  %H:%M}",
+    "timezones": ["Asia/Ho_Chi_Minh", "UTC", "America/New_York", "Europe/London", "Asia/Tokyo"],
+    "tooltip-format": "<big>{:%A, %d %B %Y · %H:%M}</big>\n<tt><small>{calendar}</small></tt>\n\n<i>Right-click: next timezone</i>",
+    "actions": { "on-click-right": "tz_up" },
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "format": {
+        "months":   "<span color='#f4b8e4'><b>{}</b></span>",
+        "days":     "<span color='#c6d0f5'>{}</span>",
+        "weeks":    "<span color='#a6d189'>W{}</span>",
+        "weekdays": "<span color='#e5c890'><b>{}</b></span>",
+        "today":    "<span color='#8caaee'><b>{}</b></span>"
+      }
+    }
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}",
+    "format-muted": "🔇",
+    "format-icons": {
+      "headphone":  "🎧",
+      "headset":    "🎧",
+      "default":    ["🔈", "🔉", "🔊"]
+    },
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "tooltip-format": "{desc} · {volume}%"
+  },
+
+  "network": {
+    "format-wifi": "📶 {signalStrength}",
+    "format-ethernet": "📡",
+    "format-disconnected": "❌",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\nIP: {ipaddr}",
+    "tooltip-format-ethernet": "Wired · {ifname}\nIP: {ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "ghostty -e nmtui"
+  },
+
+  "custom/notifications": {
+    "format": "{icon} {text}",
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "return-type": "json",
+    "format-icons": {
+      "notification":     "🔔",
+      "none":             "🔕",
+      "dnd-notification": "🔕",
+      "dnd-none":         "🔕",
+      "inhibited-notification":     "🔕",
+      "inhibited-none":             "🔕",
+      "dnd-inhibited-notification": "🔕",
+      "dnd-inhibited-none":         "🔕"
+    },
+    "tooltip-format": "Click: open panel\nRight-click: toggle DND",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
+  },
+
+  "custom/weather": {
+    "format": "{}",
+    "exec": "~/.config/hypr/scripts/weather.sh Da_Nang",
+    "return-type": "json",
+    "interval": 1800,
+    "on-click": "xdg-open https://wttr.in/Da_Nang"
+  },
+
+  "custom/updates": {
+    "format": "{}",
+    "exec": "~/.config/hypr/scripts/updates.sh",
+    "return-type": "json",
+    "interval": 3600,
+    "on-click": "ghostty -e ~/.config/hypr/scripts/run-update.sh",
+    "on-click-right": "ghostty -e ~/.config/hypr/scripts/run-update.sh check"
+  },
+
+  "tray": { "spacing": 8 },
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip-format": "Lock · Logout · Suspend · Reboot · Shutdown",
+    "on-click": "~/.config/hypr/scripts/power-menu.sh"
+  }
+}
