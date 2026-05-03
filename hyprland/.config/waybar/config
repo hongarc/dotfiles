@@ -71,9 +71,7 @@
 
   "clock": {
     "format": " {:%a %d %b  %H:%M}",
-    "timezones": ["Asia/Ho_Chi_Minh", "UTC", "America/New_York", "Europe/London", "Asia/Tokyo"],
-    "tooltip-format": "<big>{:%A, %d %B %Y · %H:%M}</big>\n<tt><small>{calendar}</small></tt>\n\n<i>Right-click: next timezone</i>",
-    "actions": { "on-click-right": "tz_up" },
+    "tooltip-format": "<big>{:%A, %d %B %Y · %H:%M}</big>\n<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
       "weeks-pos": "right",

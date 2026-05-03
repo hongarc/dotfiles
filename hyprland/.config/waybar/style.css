@@ -30,11 +30,20 @@ tooltip label { color: #c6d0f5; }
 #workspaces button {
   padding: 0 10px;
   margin: 2px;
+  border: none;
   border-radius: 8px;
   background: transparent;
   color: #c6d0f5;
+  outline: none;
+  box-shadow: none;
   transition: background 0.15s ease, color 0.15s ease;
   min-width: 26px;
+}
+#workspaces button:focus,
+#workspaces button:hover {
+  outline: none;
+  box-shadow: none;
+  border: none;
 }
 #workspaces button.active {
   background: #8caaee;
@@ -43,7 +52,10 @@ tooltip label { color: #c6d0f5; }
 }
 #workspaces button.urgent { background: #e78284; color: #1e2030; }
 #workspaces button.empty  { color: #838ba7; }
-#workspaces button:hover  { background: #51576d; color: #ffffff; }
+#workspaces button:hover  {
+  background: rgba(140, 170, 238, 0.35);   /* dim blue — same hue as active, lower alpha */
+  color: #c6d0f5;
+}
 
 /* Window title */
 #window {
