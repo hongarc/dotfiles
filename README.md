@@ -44,11 +44,11 @@ Stow creates symbolic links from your dotfiles to your home directory.
 
 **Example:**
 ```
-dotfiles/tmux/.config/tmux/navigation.conf
+dotfiles/tmux/.config/tmux/keys.conf
 ```
 Running `stow tmux` creates:
 ```
-~/.config/tmux/navigation.conf → /path/to/dotfiles/tmux/.config/tmux/navigation.conf
+~/.config/tmux/keys.conf → /path/to/dotfiles/tmux/.config/tmux/keys.conf
 ```
 
 ## 📋 What's Included
