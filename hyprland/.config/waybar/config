@@ -5,7 +5,7 @@
   "spacing": 0,
   "modules-left": ["hyprland/workspaces", "hyprland/window", "mpris"],
   "modules-center": ["clock"],
-  "modules-right": ["custom/weather", "custom/updates", "pulseaudio", "network", "custom/notifications", "tray", "custom/power"],
+  "modules-right": ["custom/ime", "custom/weather", "custom/updates", "pulseaudio", "network", "custom/notifications", "custom/power"],
 
   "hyprland/workspaces": {
     "format": "{name} {windows}",
@@ -34,18 +34,35 @@
   },
 
   "hyprland/window": {
-    "format": "{}",
-    "max-length": 60,
+    "format": "{class}",
+    "max-length": 30,
     "separate-outputs": true,
-    "icon": false,
+    "icon": true,
+    "icon-size": 18,
     "rewrite": {
-      "(.*) - Google Chrome":     "  $1",
-      "Google Chrome":            "  Chrome",
-      "(.*) - Mozilla Firefox":   "🦊  $1",
-      "(.*) - Visual Studio Code":"󰨞  $1",
-      "(.*) - ghostty":           "  $1",
-      "(.*) - NVIM":              "  $1",
-      "(.*) - lazygit":           "  $1"
+      "google-chrome":               "Chrome",
+      "chromium":                    "Chromium",
+      "firefox":                     "Firefox",
+      "Mozilla Firefox":             "Firefox",
+      "microsoft-edge":              "Edge",
+      "Microsoft-edge":              "Edge",
+      "com\\.mitchellh\\.ghostty":   "ghostty",
+      "ghostty":                     "ghostty",
+      "scratchpad-term":             "ghostty ↓",
+      "scratchpad-files":            "yazi ↓",
+      "scratchpad-music":            "music ↓",
+      "foot":                        "foot",
+      "code":                        "VS Code",
+      "code-url-handler":            "VS Code",
+      "Code":                        "VS Code",
+      "discord":                     "Discord",
+      "Slack":                       "Slack",
+      "Spotify":                     "Spotify",
+      "pavucontrol":                 "Audio",
+      "blueman-manager":             "Bluetooth",
+      "nm-connection-editor":        "Network",
+      "org.gnome.Calculator":        "Calc",
+      "":                            ""
     }
   },
 
@@ -146,6 +163,16 @@
     "interval": 3600,
     "on-click": "ghostty -e ~/.config/hypr/scripts/run-update.sh",
     "on-click-right": "ghostty -e ~/.config/hypr/scripts/run-update.sh check"
+  },
+
+  "custom/ime": {
+    "format": "{}",
+    "exec": "~/.config/hypr/scripts/ime.sh",
+    "return-type": "json",
+    "interval": 1,
+    "on-click": "fcitx5-remote -t",
+    "on-click-right": "fcitx5-configtool",
+    "tooltip-format": "Click: toggle Vie/Eng\nRight-click: configure"
   },
 
   "tray": { "spacing": 8 },

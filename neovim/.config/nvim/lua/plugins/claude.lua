@@ -29,6 +29,13 @@ return {
         height = 0.85,
         border = "rounded",
         backdrop = 80,
+        -- catppuccin's transparent integration sets SnacksNormal bg=NONE, which
+        -- makes the Claude terminal buffer render unpainted cells as pure black.
+        -- Force this window's Normal to the solid float bg (Frappé mantle), so
+        -- title/border (FloatTitle/FloatBorder) match the body instead of going transparent.
+        wo = {
+          winhighlight = "Normal:NormalFloat,NormalNC:NormalFloat",
+        },
         keys = {
           claude_hide = {
             "<C-,>",

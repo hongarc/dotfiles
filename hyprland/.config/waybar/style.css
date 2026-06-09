@@ -92,12 +92,12 @@ window#waybar.empty #window { background: transparent; }
    ================================================== */
 
 /* Shared visual styling for the grouped items (top + bottom border) */
+#custom-ime,
 #custom-weather,
 #custom-updates,
 #pulseaudio,
 #network,
-#custom-notifications,
-#tray {
+#custom-notifications {
   margin: 4px 0;
   padding: 0 12px;
   background: rgba(65, 69, 89, 0.6);
@@ -107,20 +107,16 @@ window#waybar.empty #window { background: transparent; }
   transition: background 0.15s ease;
 }
 
-/* First in group — left side rounded + left border */
-#custom-weather {
+/* First in group — left side rounded + left border (now custom/ime) */
+#custom-ime {
   border-left: 1px solid #626880;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
   margin-left: 6px;
 }
 
-/* Last in group — right side rounded + right border.
-   Apply to both notifications and tray because tray is often empty
-   (no system tray icons), in which case it collapses to 0 width and
-   the right edge needs to come from notifications. */
-#custom-notifications,
-#tray {
+/* Last in group — right side rounded + right border (notifications). */
+#custom-notifications {
   border-right: 1px solid #626880;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -139,6 +135,10 @@ window#waybar.empty #window { background: transparent; }
 }
 
 /* Per-module text colors */
+#custom-ime             { color: #c6d0f5; font-weight: bold; }
+#custom-ime.vi          { color: #ef9f76; }   /* peach when Vietnamese active */
+#custom-ime.en          { color: #99d1db; }   /* sky when English passthrough */
+#custom-ime.off         { color: #737994; }   /* dim when fcitx5 not running */
 #custom-weather         { color: #99d1db; }
 #custom-weather.offline { color: #737994; }
 #custom-updates         { color: #ef9f76; }
@@ -148,7 +148,6 @@ window#waybar.empty #window { background: transparent; }
 #network                { color: #a6d189; }
 #network.disconnected   { color: #e78284; }
 #custom-notifications   { color: #e5c890; }
-#tray                   { color: #c6d0f5; }
 
 /* Hover on every clickable pill */
 #pulseaudio:hover,

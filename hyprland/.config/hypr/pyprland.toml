@@ -1,33 +1,28 @@
 [pyprland]
 plugins = [
     "scratchpads",
-    "expose",
 ]
 
-# Drop-down terminal (Quake-style) — toggle with SUPER+grave
+# Drop-down terminal — toggle with SUPER+T
 [scratchpads.term]
-animation = "fromTop"
 command = "ghostty --class=scratchpad-term"
 class = "scratchpad-term"
 size = "75% 65%"
-position = "12.5% 5%"
 margin = 50
-unfocus = "hide"
+lazy = true
 
-# Floating yazi file manager
+# Floating yazi file manager — SUPER+Y
 [scratchpads.files]
-animation = "fromBottom"
 command = "ghostty --class=scratchpad-files -e yazi"
 class = "scratchpad-files"
 size = "70% 70%"
-position = "15% 15%"
-unfocus = "hide"
+margin = 50
+lazy = true
 
-# Music player (replace with your player command if you use one)
+# Music slot — SUPER+U
 [scratchpads.music]
-animation = "fromRight"
 command = "ghostty --class=scratchpad-music"
 class = "scratchpad-music"
 size = "40% 60%"
-position = "58% 15%"
-unfocus = "hide"
+margin = 50
+lazy = true
