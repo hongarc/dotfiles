@@ -34,14 +34,16 @@ vim.keymap.set({ "n", "v" }, "L", "I") -- Alias L -> I
 -- Window Navigation (Normal + Terminal modes)
 -- =========================================================
 
--- Right split
-vim.keymap.set("n", "<C-i>", "<C-w>l", { desc = "Go to Right Window" })
+-- NOTE: <C-i> and <Tab> share the same byte; binding <C-i> here loses the
+-- jump-forward action. Accepted trade-off for Colemak window navigation.
 
 -- Normal mode navigation
 vim.keymap.set("n", "<C-n>", "<C-w>j", { desc = "Go to Lower Window (alias of <C-j>)", remap = true })
 vim.keymap.set("n", "<C-e>", "<C-w>k", { desc = "Go to Upper Window (alias of <C-k>)", remap = true })
+vim.keymap.set("n", "<C-i>", "<C-w>l", { desc = "Go to Right Window" })
 
 -- Terminal mode navigation (must exit insert first)
+vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], { desc = "Go to Left Window" })
 vim.keymap.set("t", "<C-n>", [[<C-\><C-n><C-w>j]], { desc = "Go to Lower Window (alias of <C-j>)" })
 vim.keymap.set("t", "<C-e>", [[<C-\><C-n><C-w>k]], { desc = "Go to Upper Window (alias of <C-k>)" })
 
@@ -57,3 +59,8 @@ vim.keymap.set("i", "ne", "<Esc>", { desc = "Exit Insert Mode" })
 
 -- Scroll down (alias Ctrl+l)
 vim.keymap.set("n", "<C-l>", "<C-d>", { desc = "Scroll Down (alias of <C-d>)" })
+
+-- LSP hover on <leader>k (since `K` is remapped to motion above).
+vim.keymap.set("n", "<leader>k", function()
+  vim.lsp.buf.hover()
+end, { desc = "LSP Hover" })
