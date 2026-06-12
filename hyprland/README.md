@@ -21,8 +21,6 @@ hyprland/.config/
 └── fuzzel/                  # app launcher
 ```
 
-`ghostty/` is a separate package at the repo root since it's used independently.
-
 ## 📦 Required Fedora packages
 
 ```bash

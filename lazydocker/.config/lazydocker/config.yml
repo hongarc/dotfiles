@@ -1,0 +1,13 @@
+gui:
+  theme:
+    activeBorderColor:
+      - '#8caaee' # Blue
+      - bold
+    inactiveBorderColor:
+      - '#626880' # Surface2
+    optionsTextColor:
+      - '#8caaee' # Blue
+    selectedLineBgColor:
+      - '#414559' # Surface0
+    selectedRangeBgColor:
+      - '#51576d' # Surface1
