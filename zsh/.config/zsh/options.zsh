@@ -36,3 +36,8 @@ setopt ALWAYS_TO_END             # move cursor to end after completion
 setopt INTERACTIVE_COMMENTS      # allow `# comments` at the prompt
 setopt NO_BEEP                   # shut up
 setopt NO_FLOW_CONTROL           # disable Ctrl-S / Ctrl-Q freeze
+
+# ===== ZSH-AUTOSUGGESTIONS (must be set before the plugin is sourced) =====
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20

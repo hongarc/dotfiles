@@ -1,24 +1,24 @@
 # ===== MISE (version manager) — must come before tools it manages =====
 [ -x ~/.local/bin/mise ] && eval "$(~/.local/bin/mise activate zsh)"
 
+# ===== BAT =====
+export BAT_THEME="Catppuccin Frappe"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+
 # ===== FZF =====
 export FZF_COMPLETION_TRIGGER='//'
 
-# Global look & feel — Catppuccin Frappé
 export FZF_DEFAULT_OPTS="
-  --height 60%
-  --layout reverse
   --border rounded
-  --margin 1
-  --padding 1
   --info inline-right
   --prompt '❯ '
   --pointer '▶'
   --marker '✓'
   --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284
   --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf
-  --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284
-  --color=border:#737994"
+  --color=marker:#babbf1,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284
+  --color=selected-bg:#51576d"
 
 # Ctrl-R — history with preview + copy
 export FZF_CTRL_R_OPTS="
@@ -49,6 +49,14 @@ command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
 
 # ===== ZOXIDE (smart cd) =====
 eval_init zoxide init zsh
+
+# zz — interactive directory picker using zoxide's built-in fzf UI
+# Usage: zz [query]   (ESC / cancel is a no-op)
+# Note: `zi` is zoxide's native equivalent; `zz` is kept as a familiar alias.
+zz() {
+  local dir
+  dir=$(zoxide query -i -- "$@") && [[ -n "$dir" ]] && cd "$dir"
+}
 
 # ===== THEFUCK (lazy-loaded; first `f` call pays ~200ms Python startup) =====
 f() {

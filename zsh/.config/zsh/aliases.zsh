@@ -36,16 +36,21 @@ alias v='nvim'
 
 # ===== LISTING (eza if available, ls fallback) =====
 if command -v eza >/dev/null 2>&1; then
-  alias ls='eza --icons'
-  alias l='eza -lah --icons'
-  alias ll='eza -lh --icons'
-  alias la='eza -lAh --icons'
-  alias lt='eza --tree --icons'
+  alias ls='eza --icons --group-directories-first'
+  alias l='eza -lah --icons --group-directories-first --git'
+  alias ll='eza -lh --icons --group-directories-first --git'
+  alias la='eza -lAh --icons --group-directories-first --git'
+  alias lt='eza --tree --icons --level=2 --git-ignore'
 else
   alias l='ls -lah'
   alias ll='ls -lh'
   alias la='ls -lAh'
 fi
+
+# ===== SAFER DESTRUCTIVE OPS =====
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -pv'
 
 # ===== PROJECT SHORTCUTS =====
 alias dotfiles='cd ~/project/dotfiles'

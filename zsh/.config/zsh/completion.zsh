@@ -1,16 +1,18 @@
 # ===== COMPLETION SYSTEM =====
+# Add cached gh completion before compinit picks it up.
+# Regenerate with: gh completion -s zsh > ~/.config/zsh/completions/_gh
+fpath=(${ZDOTDIR:-$HOME}/.config/zsh/completions $fpath)
+
 autoload -Uz compinit
-# Fast compinit: full security check only if cache is older than 24h, else trust cache.
+# Fast compinit: full security check only if dump is older than 24h, else trust cache.
 # `-u` suppresses macOS "insecure directories" warnings from Homebrew dirs.
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+_zcompf=${ZDOTDIR:-$HOME}/.zcompdump
+if [[ $_zcompf(#qNmh+24) ]]; then
   compinit -u
-  compdump
 else
   compinit -C -u
 fi
-
-# GitHub CLI completions
-eval_init gh completion -s zsh
+unset _zcompf
 
 # ===== COMPLETION STYLING =====
 zstyle ':completion:*' menu no                                # let fzf-tab take over

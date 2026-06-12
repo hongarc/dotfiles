@@ -10,9 +10,6 @@ ohmyzsh/ohmyzsh path:plugins/terraform
 # Command suggestions
 zsh-users/zsh-autosuggestions
 
-# Syntax highlighting
-zsh-users/zsh-syntax-highlighting
-
 # Extra completions
 zsh-users/zsh-completions
 
@@ -22,5 +19,8 @@ Aloxaf/fzf-tab
 # Tmux integration
 ohmyzsh/ohmyzsh path:plugins/tmux
 
-# History search with arrows
+# Syntax highlighting (must load second-to-last; history-substring-search depends on it)
+zsh-users/zsh-syntax-highlighting
+
+# History search with arrows (must load last)
 zsh-users/zsh-history-substring-search
