@@ -1,91 +1,59 @@
-# 🏠 Dotfiles
+# Dotfiles
 
-Configuration files managed with [GNU Stow](https://www.gnu.org/software/stow/) for clean dotfiles management.
+Configuration files managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
-## 📁 Structure
-
-Each application has its own directory that mirrors the target file structure:
+## Packages
 
 ```
 dotfiles/
-├── zsh/                    # → ~/.zshrc, ~/.zsh_plugins.txt
-├── tmux/                   # → ~/.config/tmux/
-├── neovim/                 # → ~/.config/nvim/
-├── lazygit/                # → ~/.config/lazygit/
-└── stow-all.sh             # Apply all configs
+├── zsh/          # .zshrc, .zsh_plugins.txt, starship.toml — Antidote + Starship
+├── tmux/         # Catppuccin Frappé theme, Colemak bindings, Ctrl-m prefix
+├── neovim/       # LazyVim-based config with custom plugins and keymaps
+├── lazygit/      # Git TUI — Frappé palette, Colemak keybindings
+├── lazydocker/   # Docker TUI — Frappé palette
+├── yazi/         # File manager — Frappé theme
+├── btop/         # System monitor config
+├── hyprland/     # Wayland compositor bundle (Fedora) — see hyprland/README.md
+└── stow-all.sh   # Apply all packages at once
 ```
 
-## 🚀 Quick Start
+## Fresh machine bootstrap
 
-### Install Stow
 ```bash
-# macOS
-brew install stow
+# 1. Clone
+git clone https://github.com/hongarc/dotfiles.git ~/dotfiles
+cd ~/dotfiles
 
-# Linux
-sudo apt install stow  # Ubuntu/Debian
-sudo pacman -S stow    # Arch
+# 2. Pull submodules (tmux plugins, etc.)
+git submodule update --init --recursive
+
+# 3. Install tools
+brew bundle --file=Brewfile
+
+# 4. Link configs into home directory
+./stow-all.sh
 ```
 
-### Apply Configurations
+## Stow commands
+
 ```bash
-# Apply all
+# Apply all packages (idempotent)
 ./stow-all.sh
 
-# Apply specific
-stow zsh
-stow tmux
-stow neovim
+# Apply or re-apply a single package
+stow -Rt ~ zsh
+
+# Remove a package's symlinks
+stow -Dt ~ zsh
+
+# Dry run — preview what would change
+stow -nRt ~ zsh
 ```
 
-## 🔧 How It Works
+## Key details
 
-Stow creates symbolic links from your dotfiles to your home directory.
-
-**Example:**
-```
-dotfiles/tmux/.config/tmux/keys.conf
-```
-Running `stow tmux` creates:
-```
-~/.config/tmux/keys.conf → /path/to/dotfiles/tmux/.config/tmux/keys.conf
-```
-
-## 📋 What's Included
-
-- **🐚 Zsh**: Antidote plugins, Starship prompt, smart completions
-- **🎭 Tmux**: Custom navigation and keybindings
-- **🖥️ Neovim**: Plugin management and settings
-- **📊 LazyGit**: Git TUI customization
-
-## 🛠️ Useful Commands
-
-```bash
-# Apply config to home directory
-stow zsh
-
-# Apply config to specific target directory
-stow -t ~ zsh
-
-# Remove config
-stow -D zsh
-
-# Dry run (see what would happen)
-stow -n zsh
-
-# Verbose output (see what's happening)
-stow -v zsh
-
-# Verbose dry run (see what would happen in detail)
-stow -vn zsh
-```
-
-## 🔄 Workflow
-
-1. **Edit** config files in this repo
-2. **Commit** changes: `git add . && git commit -m "update config"`
-3. **Apply**: `stow zsh` (or whatever you changed)
-
----
-
-**Happy configuring! 🎉**
+- **Keyboard layout:** Colemak — navigation keys are `h/n/e/i` instead of `h/j/k/l`
+- **Theme:** Catppuccin Frappé throughout (tmux, lazygit, lazydocker, yazi)
+- **Tmux prefix:** `Ctrl-m`
+- **FZF completion trigger:** `//`
+- **Plugin manager:** Antidote (zsh), LazyVim/Lazy.nvim (neovim)
