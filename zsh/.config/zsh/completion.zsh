@@ -14,6 +14,37 @@ else
 fi
 unset _zcompf
 
+# ===== DEVOPS COMPLETIONS (guarded — only load when binary exists) =====
+# These run after compinit so `compdef` is available.
+# Each `source <(...)` pays the startup cost only when the tool is installed.
+
+# kubectl: full tab-completion for commands, flags, resource names
+# The ohmyzsh kubectl plugin also calls this, but guarding here is harmless
+# (zsh caches compdef calls) and ensures it works without antidote too.
+if command -v kubectl >/dev/null 2>&1; then
+  # Cache completion to /tmp to avoid 100ms kubectl startup on every shell open.
+  _kubectl_comp_cache="${TMPDIR:-/tmp}/zsh_kubectl_completion_$$_$(kubectl version --client --short 2>/dev/null | md5 2>/dev/null || echo 'noversion')"
+  if [[ ! -f "$_kubectl_comp_cache" ]]; then
+    kubectl completion zsh >| "$_kubectl_comp_cache" 2>/dev/null
+  fi
+  [[ -f "$_kubectl_comp_cache" ]] && source "$_kubectl_comp_cache"
+  unset _kubectl_comp_cache
+fi
+
+# helm: sub-command and flag completions
+command -v helm >/dev/null 2>&1 && source <(helm completion zsh)
+
+# docker + docker compose: covers both `docker <TAB>` and `docker compose <TAB>`
+# Using source <(...) matches the kubectl/helm pattern and bypasses the ohmyzsh
+# docker plugin's fpath/cache approach, which runs after compinit.
+command -v docker >/dev/null 2>&1 && source <(docker completion zsh)
+
+# terraform: uses bash-style `complete -C`; requires bashcompinit shim
+if command -v terraform >/dev/null 2>&1; then
+  autoload -Uz bashcompinit && bashcompinit
+  complete -o nospace -C "$(command -v terraform)" terraform
+fi
+
 # ===== COMPLETION STYLING =====
 zstyle ':completion:*' menu no                                # let fzf-tab take over
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'     # case-insensitive

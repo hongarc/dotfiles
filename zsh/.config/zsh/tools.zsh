@@ -68,6 +68,90 @@ f() {
 # ===== BUN COMPLETIONS =====
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
+# ===== FZF GIT HELPERS =====
+# All functions are guarded on both `git` and `fzf` being present.
+# They inherit FZF_DEFAULT_OPTS (Catppuccin colours, border, prompt) automatically.
+
+# fbr — fuzzy branch checkout (local + remote).
+# Preview pane shows recent log for the highlighted branch.
+# Select with Enter to check out; Escape/Ctrl-C is a no-op.
+fbr() {
+  command -v fzf >/dev/null 2>&1 || { print "fbr: fzf not found" >&2; return 1; }
+  git rev-parse --git-dir >/dev/null 2>&1  || { print "fbr: not a git repo" >&2; return 1; }
+
+  local branch
+  branch=$(
+    git branch --all --sort=-committerdate \
+      --format='%(refname:short)' 2>/dev/null \
+      | grep -v 'HEAD' \
+      | fzf \
+          --height=60% --layout=reverse --border=rounded \
+          --prompt='branch ❯ ' \
+          --header='Enter=checkout  Ctrl-C=abort' \
+          --preview='git log --oneline --color=always --max-count=20 {1} 2>/dev/null' \
+          --preview-window=right:55%:wrap
+  ) || return 0   # ESC = silent exit
+
+  # Strip remote prefix (e.g. "origin/main" → "main") for local checkout
+  git checkout "${branch#origin/}"
+}
+
+# fco — fuzzy checkout: branches AND tags in one list.
+# Useful when you need to jump to a tagged release without remembering its name.
+fco() {
+  command -v fzf >/dev/null 2>&1 || { print "fco: fzf not found" >&2; return 1; }
+  git rev-parse --git-dir >/dev/null 2>&1  || { print "fco: not a git repo" >&2; return 1; }
+
+  local target
+  target=$(
+    {
+      git branch --all --sort=-committerdate \
+        --format='%(refname:short)' 2>/dev/null | grep -v 'HEAD'
+      git tag --sort=-version:refname 2>/dev/null | sed 's/^/tag: /'
+    } \
+      | fzf \
+          --height=60% --layout=reverse --border=rounded \
+          --prompt='checkout ❯ ' \
+          --header='Enter=checkout  Ctrl-C=abort' \
+          --preview='
+            ref={1}
+            [[ $ref == tag:* ]] && ref=${ref#tag: }
+            git log --oneline --color=always --max-count=20 "$ref" 2>/dev/null
+          ' \
+          --preview-window=right:55%:wrap
+  ) || return 0
+
+  # Strip "tag: " prefix if selected from tag list
+  local ref="${target#tag: }"
+  git checkout "${ref#origin/}"
+}
+
+# fgl — fuzzy git log browser.
+# Highlights the selected commit in the preview pane with a full diff.
+# Press Enter to copy the commit hash to the clipboard (pbcopy); Ctrl-C to abort.
+# On Linux: change `pbcopy` to `xclip -selection clipboard` or `wl-copy`.
+fgl() {
+  command -v fzf >/dev/null 2>&1 || { print "fgl: fzf not found" >&2; return 1; }
+  git rev-parse --git-dir >/dev/null 2>&1  || { print "fgl: not a git repo" >&2; return 1; }
+
+  local commit
+  commit=$(
+    git log --oneline --color=always --decorate "$@" \
+      | fzf \
+          --ansi \
+          --height=80% --layout=reverse --border=rounded \
+          --prompt='log ❯ ' \
+          --header='Enter=copy-hash  Ctrl-C=abort' \
+          --preview='git show --stat --color=always {1} 2>/dev/null | head -80' \
+          --preview-window=right:55%:wrap \
+          --bind 'ctrl-d:preview-page-down,ctrl-u:preview-page-up'
+  ) || return 0
+
+  local hash
+  hash=$(awk '{print $1}' <<< "$commit")
+  printf '%s' "$hash" | pbcopy 2>/dev/null && print "Copied: $hash"
+}
+
 # ===== STARSHIP PROMPT (must be LAST — its precmd hook should run after everything) =====
 eval_init starship init zsh
 

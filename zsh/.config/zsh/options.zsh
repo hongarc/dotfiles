@@ -1,7 +1,12 @@
+# ZSH_CACHE_DIR — required by ohmyzsh plugins (e.g. docker) loaded via Antidote.
+# Without this, the docker plugin writes to /completions/_docker (broken path).
+ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+mkdir -p "$ZSH_CACHE_DIR/completions"
+
 # ===== HISTORY =====
 HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=100000   # in-memory lines (bumped for DevOps long-lived shells)
+SAVEHIST=100000   # on-disk lines
 
 setopt EXTENDED_HISTORY          # ":start:elapsed;command" format
 setopt INC_APPEND_HISTORY        # write immediately, not on shell exit
