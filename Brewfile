@@ -1,9 +1,6 @@
 # Brewfile — install everything with:
 #   brew bundle --file=Brewfile
 
-# --- Taps ---
-tap "hashicorp/tap"
-
 # --- Shell & prompt ---
 brew "stow"
 brew "starship"
@@ -37,15 +34,6 @@ brew "btop"
 
 # --- Docker TUI ---
 brew "lazydocker"
-
-# --- DevOps / Cloud ---
-brew "awscli"
-brew "kubernetes-cli"
-brew "kubectx"
-brew "helm"
-brew "hashicorp/tap/terraform"
-brew "k9s"
-brew "stern"
 
 # --- Misc ---
 brew "thefuck"

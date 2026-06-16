@@ -4,21 +4,12 @@ ohmyzsh/ohmyzsh path:plugins/git
 # Auto-fetch git updates
 ohmyzsh/ohmyzsh path:plugins/git-auto-fetch
 
-# Terraform CLI support (aliases: tf tfi tfp tfa tfd tff tfv; workspace in prompt)
-ohmyzsh/ohmyzsh path:plugins/terraform
-
 # Docker aliases and completions (dps dpsa di dex dlog dprune; NOTE: omz defines
 # `d` as an alias — we shadow it with our own d() function loaded after plugins)
 ohmyzsh/ohmyzsh path:plugins/docker
 
 # Docker Compose aliases (dc dcu dcd dcl)
 ohmyzsh/ohmyzsh path:plugins/docker-compose
-
-# Kubectl aliases and completions (k kgp kgs kgd kaf klo kdp + many more)
-ohmyzsh/ohmyzsh path:plugins/kubectl
-
-# AWS CLI tab-completion
-ohmyzsh/ohmyzsh path:plugins/aws
 
 # Command suggestions
 zsh-users/zsh-autosuggestions

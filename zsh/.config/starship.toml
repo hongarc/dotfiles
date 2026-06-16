@@ -1,4 +1,5 @@
 command_timeout = 1000
+scan_timeout = 50
 
 format = """
 [](#9A348E)\
@@ -30,16 +31,6 @@ $time\
 [ ](fg:#2b4f77)\
 """
 
-# Right prompt — DevOps context modules.
-# These render only when relevant (active k8s context, non-default terraform
-# workspace, AWS_PROFILE set, gcloud project configured), so everyday shells
-# stay clean.
-right_format = """
-$kubernetes\
-$terraform\
-$aws\
-$gcloud\
-"""
 
 [username]
 show_always = true
@@ -153,37 +144,3 @@ format = '[ $symbol ($version)($virtualenv) ]($style)'
 # Only show when a python-indicator file is present (pyproject.toml, etc.)
 detect_files = ["pyproject.toml", "requirements.txt", "setup.py", ".python-version", "Pipfile", "*.py"]
 
-# ===== DEVOPS CONTEXT MODULES (right_format) =====
-
-# Kubernetes — shows context/namespace.
-# disabled=true is starship's default; set false to enable.
-# Use `detect_files` + `contexts` to show only in relevant dirs if desired.
-[kubernetes]
-disabled = false
-symbol = "☸ "
-format = '[$symbol$context( \($namespace\))](bold blue) '
-# Optionally filter to specific contexts only:
-# [kubernetes.context_aliases]
-# "arn:aws:eks:.*:.*:cluster/(.*)" = "$1"   # strip ARN prefix for EKS
-
-# Terraform — shows active workspace (hidden when "default").
-[terraform]
-disabled = false
-symbol = "󱁢 "
-format = '[$symbol$workspace](bold 105) '
-
-# AWS — shows profile + region when AWS_PROFILE or AWS_DEFAULT_REGION is set.
-[aws]
-disabled = false
-symbol = " "
-format = '[$symbol($profile)(\($region\))](bold 208) '
-# Region display aliases — add your own:
-# [aws.region_aliases]
-# "ap-southeast-1" = "sg"
-# "us-east-1"      = "us-e1"
-
-# Google Cloud — shows active project (and account if different from default).
-[gcloud]
-disabled = false
-symbol = " "
-format = '[$symbol$project( \($region\))](bold 32) '
