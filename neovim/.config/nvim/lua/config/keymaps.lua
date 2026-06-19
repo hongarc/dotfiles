@@ -46,6 +46,7 @@ vim.keymap.set("n", "<C-i>", "<C-w>l", { desc = "Go to Right Window" })
 vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], { desc = "Go to Left Window" })
 vim.keymap.set("t", "<C-n>", [[<C-\><C-n><C-w>j]], { desc = "Go to Lower Window (alias of <C-j>)" })
 vim.keymap.set("t", "<C-e>", [[<C-\><C-n><C-w>k]], { desc = "Go to Upper Window (alias of <C-k>)" })
+vim.keymap.set("t", "<C-i>", [[<C-\><C-n><C-w>l]], { desc = "Go to Right Window" })
 
 -- Exit terminal mode to normal mode (keeps <Esc> free for Claude / REPLs)
 vim.keymap.set("t", "<C-]>", [[<C-\><C-n>]], { desc = "Exit Terminal Mode" })

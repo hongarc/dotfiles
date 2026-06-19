@@ -118,12 +118,12 @@ Window borders use a 45° **blue → mauve** gradient when focused, surface0 whe
 | `SUPER + Tab` | next window |
 | `SUPER SHIFT + Tab` | previous window |
 | `` SUPER + ` `` | toggle last 2 (Alt-Tab style) |
-| `SUPER + H/N/E/I` | focus right / left / down / up |
+| `SUPER + H/N/E/I` | focus left / down / up / right |
 
 ### Move windows
 | Key | Action |
 |---|---|
-| `SUPER SHIFT + H/N/E/I` | move window right / left / down / up |
+| `SUPER SHIFT + H/N/E/I` | move window left / down / up / right |
 
 ### Workspaces
 | Key | Action |

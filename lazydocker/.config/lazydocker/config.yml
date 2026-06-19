@@ -11,3 +11,11 @@ gui:
       - '#414559' # Surface0
     selectedRangeBgColor:
       - '#51576d' # Surface1
+
+# Colemak navigation (mirrors lazygit) — *-alt keys keep hjkl defaults intact
+keybinding:
+  universal:
+    prevItem-alt: 'e'   # up
+    nextItem-alt: 'n'   # down
+    prevBlock-alt: 'h'  # left
+    nextBlock-alt: 'i'  # right
