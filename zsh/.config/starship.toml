@@ -1,16 +1,19 @@
 command_timeout = 1000
 scan_timeout = 50
 
+# Catppuccin frappe powerline — deeper accent backgrounds + bold dark crust
+# (#232634) text. Backgrounds are tuned a touch deeper/more saturated than the
+# stock frappe pastels so bold dark text stays >5.5:1 contrast and "pops".
 format = """
-[](#ca9ee6)\
+[](#b58ed6)\
 $os\
 $username\
-[](bg:#8caaee fg:#ca9ee6)\
+[](bg:#7b9ae0 fg:#b58ed6)\
 $directory\
-[](fg:#8caaee bg:#ef9f76)\
+[](fg:#7b9ae0 bg:#e58d5d)\
 $git_branch\
 $git_status\
-[](fg:#ef9f76 bg:#85c1dc)\
+[](fg:#e58d5d bg:#6fb3cf)\
 $c\
 $elixir\
 $elm\
@@ -24,123 +27,122 @@ $nim\
 $python\
 $rust\
 $scala\
-[](fg:#85c1dc bg:#a6d189)\
+[](fg:#6fb3cf bg:#93c573)\
 $docker_context\
-[](fg:#a6d189 bg:#babbf1)\
+[](fg:#93c573 bg:#a4a5e8)\
 $time\
-[ ](fg:#babbf1)\
+[ ](fg:#a4a5e8)\
 """
 
 
 [username]
 show_always = true
-style_user = "fg:#232634 bg:#ca9ee6"
-style_root = "fg:#232634 bg:#ca9ee6"
+style_user = "bold fg:#232634 bg:#b58ed6"
+style_root = "bold fg:#232634 bg:#b58ed6"
 format = '[$user ]($style)'
 disabled = false
 
 [os]
-style = "fg:#232634 bg:#ca9ee6"
+style = "bold fg:#232634 bg:#b58ed6"
 disabled = true
 
 [directory]
-style = "fg:#232634 bg:#8caaee"
+style = "bold fg:#232634 bg:#7b9ae0"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [c]
-symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+symbol = " "
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
-symbol = " "
-style = "fg:#232634 bg:#a6d189"
+symbol = " "
+style = "bold fg:#232634 bg:#93c573"
 format = '[ $symbol $context ]($style)'
 
 [elixir]
-symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+symbol = " "
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
-symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+symbol = " "
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
-symbol = ""
-style = "fg:#232634 bg:#ef9f76"
+symbol = ""
+style = "bold fg:#232634 bg:#e58d5d"
 format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "fg:#232634 bg:#ef9f76"
+style = "bold fg:#232634 bg:#e58d5d"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
-symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+symbol = " "
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [gradle]
-style = "fg:#232634 bg:#85c1dc"
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
-symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+symbol = " "
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
-symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+symbol = " "
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
-symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+symbol = " "
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
-symbol = ""
-style = "fg:#232634 bg:#85c1dc"
+symbol = ""
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [nim]
 symbol = "󰆥 "
-style = "fg:#232634 bg:#85c1dc"
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
-symbol = ""
-style = "fg:#232634 bg:#85c1dc"
+symbol = ""
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
-symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+symbol = " "
+style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
 time_format = "%R" # Hour:Minute Format
-style = "fg:#232634 bg:#babbf1"
+style = "bold fg:#232634 bg:#a4a5e8"
 format = '[ ♥ $time ]($style)'
 
 # ===== LANGUAGE RUNTIMES =====
 
 [python]
 symbol = " "
-style = "fg:#232634 bg:#85c1dc"
+style = "bold fg:#232634 bg:#6fb3cf"
 # Show version + active virtualenv name when inside a python project
 format = '[ $symbol ($version)($virtualenv) ]($style)'
 # Only show when a python-indicator file is present (pyproject.toml, etc.)
 detect_files = ["pyproject.toml", "requirements.txt", "setup.py", ".python-version", "Pipfile", "*.py"]
-
