@@ -47,10 +47,10 @@ tooltip label { color: #c6d0f5; }
 }
 #workspaces button.active {
   background: #8caaee;
-  color: #1e2030;
+  color: #303446;
   font-weight: bold;
 }
-#workspaces button.urgent { background: #e78284; color: #1e2030; }
+#workspaces button.urgent { background: #e78284; color: #303446; }
 #workspaces button.empty  { color: #838ba7; }
 #workspaces button:hover  {
   background: rgba(140, 170, 238, 0.35);   /* dim blue — same hue as active, lower alpha */
