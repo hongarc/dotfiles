@@ -29,7 +29,20 @@ git submodule update --init --recursive
 stow tmux
 ```
 
-Requires `fzf` on PATH (`brew install fzf`) for the tmux-fzf menu.
+**Requires tmux ≥ 3.3.** This config uses `allow-passthrough` (3.3), `%if`/`%hidden` format
+blocks and Catppuccin (3.0), and `focus-events`/`automatic-rename-format` (1.9). On old distros
+(Amazon Linux 2 ships **tmux 1.8**) the package manager's tmux is too old — build from source:
+
+```bash
+# Amazon Linux 2 / RHEL / CentOS
+sudo yum install -y gcc make bison pkgconfig libevent-devel ncurses-devel
+# Ubuntu/Debian: sudo apt install -y build-essential libevent-dev libncurses-dev bison pkg-config
+cd /tmp && curl -LO https://github.com/tmux/tmux/releases/download/3.5a/tmux-3.5a.tar.gz
+tar xf tmux-3.5a.tar.gz && cd tmux-3.5a && ./configure && make && sudo make install
+hash -r && tmux -V   # -> tmux 3.5a  (ensure /usr/local/bin precedes /usr/bin on PATH)
+```
+
+Also requires `fzf` on PATH (`brew install fzf`) for the tmux-fzf menu.
 
 ## Prefix
 
