@@ -7,12 +7,12 @@ format = """
 [](#b58ed6)\
 $os\
 $username\
-[](fg:#b58ed6 bg:#232634)[](fg:#232634 bg:#7b9ae0)\
+[](fg:#b58ed6 bg:#7b9ae0)\
 $directory\
-[](fg:#7b9ae0 bg:#232634)[](fg:#232634 bg:#e58d5d)\
+[](fg:#7b9ae0 bg:#e58d5d)\
 $git_branch\
 $git_status\
-[](fg:#e58d5d bg:#232634)[](fg:#232634 bg:#6fb3cf)\
+[](fg:#e58d5d bg:#6fb3cf)\
 $c\
 $elixir\
 $elm\
@@ -26,9 +26,9 @@ $nim\
 $python\
 $rust\
 $scala\
-[](fg:#6fb3cf bg:#232634)[](fg:#232634 bg:#93c573)\
+[](fg:#6fb3cf bg:#93c573)\
 $docker_context\
-[](fg:#93c573 bg:#232634)[](fg:#232634 bg:#a4a5e8)\
+[](fg:#93c573 bg:#a4a5e8)\
 $time\
 [ ](fg:#a4a5e8)\
 """
