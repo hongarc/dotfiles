@@ -3,3 +3,6 @@ Thumbs.db
 *.swp
 *.log
 _workspace/
+
+# Machine-local nvim plugin (hardcodes a local dir= path; keep untracked)
+neovim/.config/nvim/lua/plugins/git-evolution.lua

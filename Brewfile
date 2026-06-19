@@ -27,6 +27,10 @@ brew "tmux"
 # --- Editor ---
 brew "neovim"
 brew "mise"
+brew "bun"
+
+# --- System info ---
+brew "fastfetch"
 
 # --- File manager & system monitor ---
 brew "yazi"
