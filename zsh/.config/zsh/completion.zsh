@@ -21,7 +21,14 @@ unset _zcompf
 # Explicit source <(...) ensures `docker compose <TAB>` subcommands work reliably,
 # complementing the omz docker plugin (the plugin's fpath _docker runs after
 # compinit and may not cover compose sub-commands on all systems).
-command -v docker >/dev/null 2>&1 && source <(docker completion zsh)
+# Guard on the `completion` subcommand actually existing — old docker (e.g. the
+# 1.x/19.x on some distros) has the binary but no `docker completion`, which would
+# otherwise print "'completion' is not a docker command." on every shell start.
+if command -v docker >/dev/null 2>&1; then
+  _docker_comp="$(docker completion zsh 2>/dev/null)" \
+    && [[ -n "$_docker_comp" ]] && source <(printf '%s' "$_docker_comp")
+  unset _docker_comp
+fi
 
 # ===== COMPLETION STYLING =====
 zstyle ':completion:*' menu no                                # let fzf-tab take over
