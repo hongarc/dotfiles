@@ -84,3 +84,16 @@ Tmux plugins are git submodules. After cloning:
 ```bash
 git submodule update --init --recursive
 ```
+
+## Harness: Dotfiles Consistency
+
+**Goal:** Keep theme, keybindings, and bootstrap consistent across all tools (tmux, zsh, neovim, lazygit, lazydocker, yazi, btop, hyprland).
+
+**Trigger:** For any cross-tool consistency request (make configs consistent, theme/keybinding consistency, audit my dotfiles, re-run the consistency check), use the `dotfiles-consistency` skill. Simple single-tool questions can be answered directly. Single-nvim-plugin asks → `polaron`; applying one known edit → `quark`/`/implement`.
+
+**Reviewers:** `theme-reviewer` (Catppuccin frappe uniformity), `keybind-reviewer` (Colemak `hnei` parity), `repro-reviewer` (stow/submodules/lockfiles/hygiene). All read-only; fixes route to `quark`.
+
+**Changelog:**
+| Date | Change | Target | Reason |
+|------|--------|--------|--------|
+| 2026-06-19 | Initial build (lean harness) | agents/{theme,keybind,repro}-reviewer, skills/dotfiles-consistency | reuse global dotfiles-audit; add parallel per-dimension reviewers + orchestrator |
