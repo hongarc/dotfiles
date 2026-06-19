@@ -1,19 +1,18 @@
+# Catppuccin frappe powerline: deeper accents, bold dark crust (#232634) text,
+# crust dividers between segments. Glyphs preserved from the original config.
 command_timeout = 1000
 scan_timeout = 50
 
-# Catppuccin frappe powerline — deeper accent backgrounds + bold dark crust
-# (#232634) text. Backgrounds are tuned a touch deeper/more saturated than the
-# stock frappe pastels so bold dark text stays >5.5:1 contrast and "pops".
 format = """
-[](#b58ed6)\
+[](#b58ed6)\
 $os\
 $username\
-[](fg:#b58ed6 bg:#232634)[](fg:#232634 bg:#7b9ae0)\
+[](fg:#b58ed6 bg:#232634)[](fg:#232634 bg:#7b9ae0)\
 $directory\
-[](fg:#7b9ae0 bg:#232634)[](fg:#232634 bg:#e58d5d)\
+[](fg:#7b9ae0 bg:#232634)[](fg:#232634 bg:#e58d5d)\
 $git_branch\
 $git_status\
-[](fg:#e58d5d bg:#232634)[](fg:#232634 bg:#6fb3cf)\
+[](fg:#e58d5d bg:#232634)[](fg:#232634 bg:#6fb3cf)\
 $c\
 $elixir\
 $elm\
@@ -27,11 +26,11 @@ $nim\
 $python\
 $rust\
 $scala\
-[](fg:#6fb3cf bg:#232634)[](fg:#232634 bg:#93c573)\
+[](fg:#6fb3cf bg:#232634)[](fg:#232634 bg:#93c573)\
 $docker_context\
-[](fg:#93c573 bg:#232634)[](fg:#232634 bg:#a4a5e8)\
+[](fg:#93c573 bg:#232634)[](fg:#232634 bg:#a4a5e8)\
 $time\
-[ ](fg:#a4a5e8)\
+[ ](fg:#a4a5e8)\
 """
 
 
@@ -54,32 +53,32 @@ truncation_symbol = "…/"
 
 [directory.substitutions]
 "Documents" = "󰈙 "
-"Downloads" = " "
-"Music" = " "
-"Pictures" = " "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
 
 [c]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [docker_context]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#93c573"
 format = '[ $symbol $context ]($style)'
 
 [elixir]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [elm]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [git_branch]
-symbol = ""
+symbol = ""
 style = "bold fg:#232634 bg:#e58d5d"
 format = '[ $symbol $branch ]($style)'
 
@@ -88,7 +87,7 @@ style = "bold fg:#232634 bg:#e58d5d"
 format = '[$all_status$ahead_behind ]($style)'
 
 [golang]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
@@ -97,22 +96,22 @@ style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [haskell]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [java]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [julia]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [nodejs]
-symbol = ""
+symbol = ""
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
@@ -122,12 +121,12 @@ style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [rust]
-symbol = ""
+symbol = ""
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
 [scala]
-symbol = " "
+symbol = " "
 style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version) ]($style)'
 
@@ -146,3 +145,4 @@ style = "bold fg:#232634 bg:#6fb3cf"
 format = '[ $symbol ($version)($virtualenv) ]($style)'
 # Only show when a python-indicator file is present (pyproject.toml, etc.)
 detect_files = ["pyproject.toml", "requirements.txt", "setup.py", ".python-version", "Pipfile", "*.py"]
+
