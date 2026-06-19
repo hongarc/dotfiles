@@ -15,7 +15,7 @@ eval_init() {
 # ---- Load config modules (order matters) ----
 # completion must run before plugins (plugins call `compdef`, defined by compinit)
 # starship/fastfetch in tools must run AFTER keys/plugins to be the last precmd hook
-for f in options path completion plugins keys tools aliases; do
+for f in options path completion plugins keys tools aliases doctor; do
   [[ -r "$ZSH_CONFIG/$f.zsh" ]] && source "$ZSH_CONFIG/$f.zsh"
 done
 
