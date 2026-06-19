@@ -70,3 +70,7 @@ dotdoctor() {
     print -P "%F{green}✓ All $total tools installed.%f"
   fi
 }
+
+# Short name: `.dt` (a function, not an alias — alias names starting with '.'
+# don't expand reliably; a function resolves at run time and always works).
+function .dt { dotdoctor "$@"; }
